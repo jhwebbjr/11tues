@@ -14,3 +14,11 @@ p db.execute(sql)
 # Find the developer who joined most recently.
 sql = "SELECT name FROM developers ORDER BY joined_on ASC LIMIT 1"
 p db.execute(sql)
+
+#Find the number of projects for each client.
+sql = "SELECT clients.name, Count(projects.name)
+FROM projects
+JOIN clients
+ON projects.client_id=clients.id
+GROUP BY clients.name"
+p db.execute(sql)
