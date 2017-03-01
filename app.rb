@@ -22,3 +22,12 @@ JOIN clients
 ON projects.client_id=clients.id
 GROUP BY clients.name"
 p db.execute(sql)
+
+#Find all time entries, and show each one's client name next to it.
+sql = "SELECT time_entries.*, clients.name
+FROM time_entries
+JOIN projects
+ON time_entries.project_id=projects.id
+JOIN clients
+ON projects.client_id=clients.id"
+p db.execute(sql)
